@@ -25,6 +25,11 @@ planner.plan(start, goal)
 planner.gridDrawer.waitForKeyPress()
 
 # Show the path
-planner.extractPathToGoal()
+path = planner.extractPathToGoal()
 planner.gridDrawer.waitForKeyPress()
 
+
+print "Number of cells visited: %d" % planner.numberOfCellsVisited
+print "Number of Waypoints: %d" % path.getNumberOfWaypoints()
+print "Travel length of planned path: %f" % path.getTotalLength()
+print "Total angle turned on planned path: %d" % path.getTotalAngle()
