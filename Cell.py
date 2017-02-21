@@ -40,3 +40,7 @@ class Cell(object):
         y = this.coords[1] - anotherCell.coords[1]
         return math.sqrt(x*x + y*y)
     
+    def angleToCell(this, anotherCell):
+        x = anotherCell.coords[0] - this.coords[0]
+        y = anotherCell.coords[1] - this.coords[1]
+        return math.degrees(math.atan2(y,x))
