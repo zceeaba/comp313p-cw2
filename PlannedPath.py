@@ -18,3 +18,20 @@ class PlannedPath(object):
         # travel cost of the path.
         this.numberOfWaypoints = 0
         this.pathTravelCost = 0
+
+    def getNumberOfWaypoints(this):
+        this.numberOfWaypoints = len(this.waypoints)
+        return this.numberOfWaypoints
+
+    # Sum distances between each cell
+    def getTotalLength(this):
+        
+        total = 0
+        prev = this.waypoints[0]
+        for cell in this.waypoints:
+            total += cell.distanceToCell(prev)
+            prev = cell
+        
+        this.pathTravelCost = total
+
+        return total
