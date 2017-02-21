@@ -1,3 +1,4 @@
+import math
 from enum import Enum
 
 # Enumeration to give the cell label
@@ -33,4 +34,9 @@ class Cell(object):
         # The initial path cost is infinite. For algorithms that need
         # it, this is the necessary initial condition.
         this.pathCost = float("inf")
+
+    def distanceToCell(this, anotherCell):
+        x = this.coords[0] - anotherCell.coords[0]
+        y = this.coords[1] - anotherCell.coords[1]
+        return math.sqrt(x*x + y*y)
     

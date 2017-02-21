@@ -9,14 +9,9 @@ class BestFirstPlanner(PlannerBase):
         this.Queue = dict()
 
     # Score is Euclidean Distance to goal. Smaller score = better.
-    def scoreCell(this, cell):
-        x = this.goal.coords[0] - cell.coords[0]
-        y = this.goal.coords[1] - cell.coords[1]
-        return math.sqrt(x*x + y*y)
-
     # Add to dictionary with score as value
     def pushCellOntoQueue(this, cell):
-        score = this.scoreCell(cell)
+        score = cell.distanceToCell(this.goal)
         this.Queue[cell] = score
     
     # Check the queue size is zero
