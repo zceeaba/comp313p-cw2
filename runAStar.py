@@ -14,7 +14,7 @@ for y in xrange(0, 19):
 start = (3, 18)
 goal = (20, 0)
 
-heuristics = ["zero","euclidean","manhattan"]
+heuristics = ["zero","euclidean","manhattan","diagonal"]
 
 for h in heuristics:
 

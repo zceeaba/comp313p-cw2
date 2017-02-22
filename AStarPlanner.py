@@ -28,6 +28,13 @@ class AStarPlanner(PlannerBase):
             y = abs(cell.coords[1]-this.goal.coords[1])
             return x+y
 
+
+        if this.Heuristic == "diagonal":
+            x = abs(cell.coords[0]-this.goal.coords[0])
+            y = abs(cell.coords[1]-this.goal.coords[1])
+            return (x+y) + (math.sqrt(2) - 2)*min(x,y)
+
+
     # Check the queue size is zero
     def isQueueEmpty(this):
         return not this.Queue
