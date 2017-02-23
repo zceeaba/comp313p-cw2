@@ -5,10 +5,11 @@ import math
 
 class AStarPlanner(PlannerBase):
 
-    def __init__(this, occupancyGrid, heuristic):
+    def __init__(this, occupancyGrid, heuristic, hscale=0):
         PlannerBase.__init__(this, occupancyGrid)
         this.Queue = dict()
         this.Heuristic = heuristic
+        this.Hscale = hscale
 
     # Add to dictionary with score as value
     def pushCellOntoQueue(this, cell):
@@ -18,22 +19,23 @@ class AStarPlanner(PlannerBase):
     
     def heuristic(this, cell):
         if this.Heuristic == "zero":
-            return 0
+            h = 0
         
         if this.Heuristic == "euclidean":
-            return cell.distanceToCell(this.goal)
+            h = cell.distanceToCell(this.goal)
 
         if this.Heuristic == "manhattan":
             x = abs(cell.coords[0]-this.goal.coords[0])
             y = abs(cell.coords[1]-this.goal.coords[1])
-            return x+y
+            h = x+y
 
 
         if this.Heuristic == "diagonal":
             x = abs(cell.coords[0]-this.goal.coords[0])
             y = abs(cell.coords[1]-this.goal.coords[1])
-            return (x+y) + (math.sqrt(2) - 2)*min(x,y)
+            h = (x+y) + (math.sqrt(2) - 2)*min(x,y)
 
+        return h * (1.0 + this.Hscale)
 
     # Check the queue size is zero
     def isQueueEmpty(this):

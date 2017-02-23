@@ -6,8 +6,8 @@ from AStarPlanner import AStarPlanner
 # Create the occupancy grid
 occupancyGrid = OccupancyGrid(21, 21, 0.5)
 
-for y in xrange(0, 19):
-    occupancyGrid.setCell(11, y, 1)
+#for y in xrange(0, 19):
+#    occupancyGrid.setCell(11, y, 1)
 
     
 # Start and goal cells
@@ -21,7 +21,7 @@ for h in heuristics:
     print "\n\nHeuristic: %s" % h
 
     # Create the planner
-    planner = AStarPlanner(occupancyGrid, h);
+    planner = AStarPlanner(occupancyGrid, h, hscale=1/100.0)
     planner.setPauseTime(0)
 
     # Run it
